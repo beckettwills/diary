@@ -15,15 +15,23 @@
       }
 
       body {
-        background: url("changes.png") no-repeat center center fixed;
+        background-image: url("changes.png");
+        background-position: center center;
+        background-repeat: no-repeat;
         background-size: cover;
-        background-color: #0d0d0d;
+        background-attachment: fixed;
+        background-color: #0d0d0d; /* fallback */
         color: #33ff77;
+        font-family: "Source Code Pro", Menlo, Consolas, monospace;
+        margin: 0;
+        padding: 40px;
+        line-height: 1.8;
+        font-size: 14px;
       }
 
       .scroll-container {
-        width: 100%;
         height: 100%;
+        width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -116,15 +124,23 @@
       <div class="overlay">
         <div class="title">CHANGE LOG</div>
 
-        <div class="version">v1.0.4</div>
-        <div class="date">July 1, 2025</div>
+        <div class="version">v1.0.5</div>
+        <div class="date">July 3, 2025</div>
         <div class="update">
-          so i kinda forgot to add the picture to the web/ and filelist, lets just act like that didnt happen
+          ok so im actually not stupid. the image shows now i hate css
+        </div>
+        <div class="separator"></div>
+
+        <div class="version">v1.0.4</div>
+        <div class="date">July 2, 2025</div>
+        <div class="update">
+          so i kinda forgot to add the picture to the web/ and filelist, lets
+          just act like that didnt happen
         </div>
         <div class="separator"></div>
 
         <div class="version">v1.0.3</div>
-        <div class="date">July 1, 2025</div>
+        <div class="date">July 2, 2025</div>
         <div class="update">
           this version now has a background picture and a few background updates
           like easier github updates etc
