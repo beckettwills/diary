@@ -1,0 +1,15 @@
+changes.html
+filelist.txt
+icons/book-lock.svg
+icons/book-open-text.svg
+icons/book.svg
+icons/lock-open.svg
+icons/lock.svg
+image.png
+index.html
+lock.html
+new.html
+script.js
+settings.html
+style.css
+version.txt

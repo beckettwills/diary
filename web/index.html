@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Diary - Index</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="spinner"></div>
+    </div>
+    <div class="container hidden">
+      <div class="header-row">
+        <div class="header-title">
+          <img src="icons/book-lock.svg" alt="Diary Icon" class="header-icon" />
+          <h1>My Diary</h1>
+        </div>
+        <div class="header-buttons">
+          <a class="btn-fab" href="new.html">
+            <div class="icon-wrap">
+              <img class="icon-default" src="icons/book.svg" alt="Book" />
+              <img
+                class="icon-hover"
+                src="icons/book-open-text.svg"
+                alt="Book Open"
+              />
+            </div>
+            <span>New</span>
+          </a>
+          <a class="btn-fab" href="lock.html">
+            <div class="icon-wrap">
+              <img
+                class="icon-default"
+                src="icons/lock-open.svg"
+                alt="Unlocked"
+              />
+              <img class="icon-hover" src="icons/lock.svg" alt="Locked" />
+            </div>
+            <span>Lock</span>
+          </a>
+        </div>
+      </div>
+      <div id="entries" class="scroll-box"></div>
+    </div>
+    <div id="toast"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
