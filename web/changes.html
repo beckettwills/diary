@@ -1,86 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Change Log</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background-color: #0d0d0d;
-      color: #33ff77;
-      font-family: "Source Code Pro", Menlo, Consolas, monospace;
-      margin: 0;
-      padding: 40px;
-      line-height: 1.7;
-      font-size: 14px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Change Log</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: "Source Code Pro", Menlo, Consolas, monospace;
+      }
 
-    .title {
-      font-size: 20px;
-      color: #5fdfff;
-      border-bottom: 1px solid #222;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-      text-shadow: 0 0 2px #5fdfff44;
-    }
+      body {
+        background: url("changes.png") no-repeat center center fixed;
+        background-size: cover;
+        background-color: #0d0d0d;
+        color: #33ff77;
+      }
 
-    .version {
-      color: #fff;
-      font-weight: bold;
-      margin-top: 30px;
-      margin-bottom: 5px;
-    }
+      .scroll-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.85);
+      }
 
-    .date {
-      color: #888;
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
+      .overlay {
+        width: 90%;
+        max-width: 800px;
+        max-height: 90%;
+        padding: 30px;
+        overflow-y: auto;
+        background-color: rgba(10, 10, 10, 0.9);
+        border-radius: 12px;
+        box-shadow: 0 0 20px #00000088;
+        display: flex;
+        flex-direction: column;
+      }
 
-    ul {
-      list-style-type: "▸ ";
-      padding-left: 20px;
-      margin-bottom: 0;
-    }
+      .title {
+        font-size: 20px;
+        color: #5fdfff;
+        border-bottom: 1px solid #222;
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+        text-shadow: 0 0 2px #5fdfff44;
+      }
 
-    li {
-      margin-bottom: 6px;
-    }
+      .version {
+        color: #fff;
+        font-weight: bold;
+        margin-top: 30px;
+        font-size: 16px;
+      }
 
-    .separator {
-      border-top: 1px solid #222;
-      margin-top: 30px;
-      margin-bottom: 20px;
-    }
+      .date {
+        color: #888;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
 
-    a {
-      color: #5fdfff;
-      text-decoration: none;
-    }
+      .update {
+        margin-bottom: 20px;
+        white-space: pre-wrap;
+        line-height: 1.8;
+      }
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="title">CHANGE LOG</div>
+      .separator {
+        border-top: 1px solid #222;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
 
-  <div class="version">v1.0.1</div>
-  <div class="date">July 1, 2025</div>
-  <ul>
-    <li>Auto-close app after update for consistency</li>
-    <li>Clickable version label in settings → opens this page</li>
-    <li>Terminal-style changelog UI added</li>
-  </ul>
+      .back-btn {
+        margin-top: 40px;
+        align-self: flex-end;
+        background-color: #111;
+        border: 1px solid #444;
+        color: #5fdfff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+      }
 
-  <div class="separator"></div>
+      .back-btn:hover {
+        background-color: #1a1a1a;
+        color: #33ff77;
+      }
 
-  <div class="version">v1.0.0</div>
-  <div class="date">July 1, 2025</div>
-  <ul>
-    <li>Initial release of local diary app</li>
-    <li>Started use of Github for updates</li>
-  </ul>
-</body>
+      /* Smooth scrollbars */
+      .overlay::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .overlay::-webkit-scrollbar-thumb {
+        background-color: #444;
+        border-radius: 10px;
+      }
+
+      .overlay::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-container">
+      <div class="overlay">
+        <div class="title">CHANGE LOG</div>
+
+        <div class="version">v1.0.4</div>
+        <div class="date">July 1, 2025</div>
+        <div class="update">
+          this version now has a background picture and a few background updates
+          like easier github updates etc
+        </div>
+        <div class="separator"></div>
+        <div class="version">v1.0.3</div>
+        <div class="date">July 1, 2025</div>
+        <div class="update">
+          test update? not completely sure what i did but i hope u still love me
+        </div>
+        <div class="separator"></div>
+
+        <div class="version">v1.0.2</div>
+        <div class="date">July 1, 2025</div>
+        <div class="update">
+          kinda forget what this one did. i added styling to this page tho
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="version">v1.0.1</div>
+        <div class="date">July 1, 2025</div>
+        <div class="update">
+          this version calm luh allowed versions to be introduced through
+          github. it also added this page so yip yip horray
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="version">v1.0.0</div>
+        <div class="date">July 1, 2025</div>
+        <div class="update">
+          this was the release. i dont feel like explaining much
+        </div>
+
+        <button class="back-btn" onclick="window.location.href='settings.html'">
+          ← Back to Settings
+        </button>
+      </div>
+    </div>
+  </body>
 </html>
