@@ -1,4 +1,3 @@
-// --- SCRIPT.JS ---
 console.log("Script loaded");
 
 function showToast(message, duration = 1500) {
@@ -34,7 +33,6 @@ function loadEntries() {
         <p>${entry.content}</p>
         <small>${entry.date}</small>
       `;
-
       container.appendChild(div);
     });
   }).catch(err => {
@@ -120,6 +118,12 @@ function setupExpandableButtons() {
         span.style.marginLeft = "12px";
         span.style.maxWidth = "150px";
       }
+
+      // toggle hover icons
+      const defIcon = btn.querySelector(".icon-default");
+      const hoverIcon = btn.querySelector(".icon-hover");
+      if (defIcon) defIcon.style.opacity = "0";
+      if (hoverIcon) hoverIcon.style.opacity = "1";
     });
 
     btn.addEventListener("mouseleave", () => {
@@ -133,6 +137,11 @@ function setupExpandableButtons() {
         span.style.marginLeft = "0";
         span.style.maxWidth = "0";
       }
+
+      const defIcon = btn.querySelector(".icon-default");
+      const hoverIcon = btn.querySelector(".icon-hover");
+      if (defIcon) defIcon.style.opacity = "1";
+      if (hoverIcon) hoverIcon.style.opacity = "0";
     });
   });
 }
@@ -154,38 +163,19 @@ function fadeOutPage(callback) {
   setTimeout(callback, 500);
 }
 
-document.addEventListener("contextmenu", (e) => {
-  const tag = e.target.tagName.toLowerCase();
-  if (tag !== "textarea" && tag !== "input") {
-    e.preventDefault();
-  }
-});
-
-window.addEventListener("pywebviewready", () => {
-  const preloader = document.getElementById("preloader");
-  if (preloader) {
-    preloader.style.opacity = "0";
-    setTimeout(() => preloader.remove(), 400);
-  }
-
-  const container = document.querySelector(".container");
-  if (container) {
-    container.classList.add("loaded");
-  }
-
-  setupExpandableButtons();
-
-  if (document.getElementById("entries")) loadEntries();
-  if (document.getElementById("save-button")) document.getElementById("save-button").onclick = saveEntry;
-  if (document.getElementById("pwBtn")) initAuthPage();
-});
-
 function markUnlocked() {
   window.unlocked = true;
   sessionStorage.setItem("unlocked", "true");
 }
 
 window.unlocked = sessionStorage.getItem("unlocked") === "true";
+
+document.addEventListener("contextmenu", (e) => {
+  const tag = e.target.tagName.toLowerCase();
+  if (tag !== "textarea" && tag !== "input") {
+    e.preventDefault();
+  }
+});
 
 function cmdFAIL(msg) {
   const toast = document.getElementById("toast");
@@ -272,4 +262,83 @@ window.addEventListener("keydown", (e) => {
       }
     }
   }
+});
+
+/* === THEME TOGGLE === */
+function setTheme(mode) {
+  document.body.classList.remove("light", "dark");
+  document.body.classList.add(mode);
+  localStorage.setItem("theme", mode);
+  updateThemeToggleIcon(mode);
+}
+
+function toggleTheme() {
+  const current = document.body.classList.contains("light") ? "light" : "dark";
+  const next = current === "light" ? "dark" : "light";
+  setTheme(next);
+}
+
+function updateThemeToggleIcon(mode) {
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return;
+
+  const iconWrap = btn.querySelector(".icon-wrap");
+  const span = btn.querySelector("span");
+  if (!iconWrap || !span) return;
+
+  const [def, hover] = iconWrap.querySelectorAll("img");
+  if (mode === "dark") {
+    def.src = "icons/dark.svg";
+    hover.src = "icons/light.svg";
+    span.textContent = "Light Mode";
+  } else {
+    def.src = "icons/light.svg";
+    hover.src = "icons/dark.svg";
+    span.textContent = "Dark Mode";
+  }
+}
+
+function insertThemeToggle() {
+  const header = document.querySelector(".header-buttons");
+  if (!header) return;
+
+  const btn = document.createElement("div");
+  btn.className = "btn-fab";
+  btn.id = "themeToggle";
+  btn.innerHTML = `
+    <div class="icon-wrap">
+      <img class="icon-default" src="" alt="mode" />
+      <img class="icon-hover" src="" alt="mode" />
+    </div>
+    <span></span>
+  `;
+  btn.onclick = toggleTheme;
+  header.appendChild(btn);
+
+  const mode = localStorage.getItem("theme") || "dark";
+  updateThemeToggleIcon(mode);
+}
+
+/* === INIT === */
+window.addEventListener("pywebviewready", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.style.opacity = "0";
+    setTimeout(() => preloader.remove(), 400);
+  }
+
+  const container = document.querySelector(".container");
+  if (container) container.classList.add("loaded");
+
+  setupExpandableButtons();
+  insertThemeToggle();
+
+  if (document.getElementById("entries")) loadEntries();
+  if (document.getElementById("save-button")) document.getElementById("save-button").onclick = saveEntry;
+  if (document.getElementById("pwBtn")) initAuthPage();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = localStorage.getItem("theme") || "dark";
+  setTheme(saved);
 });

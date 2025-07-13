@@ -3,11 +3,13 @@
   <head>
     <title>My Diary - Lock</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div id="preloader">
       <div class="spinner"></div>
     </div>
+
     <div class="container hidden">
       <div
         class="header-title"
@@ -16,12 +18,22 @@
         <img src="icons/lock.svg" alt="Lock Icon" class="header-icon" />
         <h1>Enter Password</h1>
       </div>
+
       <input type="password" id="pw" placeholder="Password" />
-      <button id="pwBtn" class="btn">Enter</button>
-      <button id="touchBtn" class="btn alt">Use Touch ID</button>
+      <div
+        class="btn-row"
+        style="justify-content: center; gap: 16px; margin-top: 12px"
+      >
+        <button id="pwBtn" class="btn">Enter</button>
+        <button id="touchBtn" class="btn alt">Use Touch ID</button>
+      </div>
+
+      <div
+        class="header-buttons"
+        style="position: absolute; top: 20px; right: 20px; z-index: 99"
+      ></div>
     </div>
+
     <div id="toast"></div>
-    <script src="script.js"></script>
   </body>
 </html>
-

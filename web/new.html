@@ -3,27 +3,31 @@
   <head>
     <title>New Entry</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div id="preloader">
       <div class="spinner"></div>
     </div>
+
     <div class="container hidden">
       <div class="header-row">
-        <div class="header-title">     
+        <div class="header-title">
           <h1>New Entry</h1>
         </div>
-        <a class="btn-fab" href="index.html">
-          <div class="icon-wrap">
-            <img
-              class="icon-default"
-              src="icons/book-open-text.svg"
-              alt="Book Open"
-            />
-            <img class="icon-hover" src="icons/book.svg" alt="Book" />
-          </div>
-          <span>Home</span>
-        </a>
+        <div class="header-buttons">
+          <a class="btn-fab" href="index.html">
+            <div class="icon-wrap">
+              <img
+                class="icon-default"
+                src="icons/book-open-text.svg"
+                alt="Book Open"
+              />
+              <img class="icon-hover" src="icons/book.svg" alt="Book" />
+            </div>
+            <span>Home</span>
+          </a>
+        </div>
       </div>
 
       <input id="title" placeholder="Title" /><br />
@@ -31,7 +35,7 @@
       ><br />
       <button id="save-button" class="btn">Save Entry</button>
     </div>
+
     <div id="toast"></div>
-    <script src="script.js"></script>
   </body>
 </html>

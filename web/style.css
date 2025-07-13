@@ -1,29 +1,66 @@
+/* === THEME VARIABLES === */
+:root {
+  --bg-image: url("image.png");
+  --overlay: rgba(0, 0, 0, 0.75);
+  --container-bg: rgba(25, 25, 25, 0.9);
+  --text-color: #eee;
+  --entry-bg: rgba(255, 255, 255, 0.04);
+  --input-bg: #111;
+  --input-border: #444;
+  --accent: #ff3a3a;
+  --accent-hover: #ff5c5c;
+  --btn-alt-bg: #333;
+  --btn-alt-hover: #444;
+  --toast-bg: rgba(30, 30, 30, 0.9);
+  --mono-font: monospace;
+  --version-color: #aaa;
+  --light-bg-image: url("light-bg.png");
+}
+
+body.light {
+  --bg-image: var(--light-bg-image);
+  --overlay: rgba(255, 255, 255, 0.6);
+  --container-bg: #fffdf4;
+  --text-color: #222;
+  --entry-bg: #f7f3e3;
+  --input-bg: #fff8dc;
+  --input-border: #ddd;
+  --accent: #0077cc;
+  --accent-hover: #3399ff;
+  --btn-alt-bg: #c9c9c9;
+  --btn-alt-hover: #bdbdbd;
+  --toast-bg: rgba(255, 255, 255, 0.9);
+  --version-color: #555;
+}
+
+/* === BASE === */
 body {
   margin: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
-  background: url("image.png") center center / cover no-repeat fixed;
-  color: #eee;
+  background: var(--bg-image) center center / cover no-repeat fixed;
+  color: var(--text-color);
   height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.5s ease;
+  transition: background 0.5s ease, color 0.5s ease;
+  position: relative;
 }
 
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: var(--overlay);
   z-index: -1;
 }
 
 .container {
   width: 70vw;
   height: 90vh;
-  background: rgba(25, 25, 25, 0.9);
+  background: var(--container-bg);
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
@@ -42,6 +79,19 @@ body::before {
   transition-delay: 0s;
 }
 
+/* === SETTINGS PAGE === */
+body.settings-page {
+  justify-content: center;
+  align-items: center;
+}
+
+body.settings-page .container {
+  height: auto;
+  width: 70vw;
+  min-height: 80vh;
+}
+
+/* === HEADER === */
 .header-row {
   display: flex;
   justify-content: space-between;
@@ -65,6 +115,7 @@ body::before {
   gap: 24px;
 }
 
+/* === BUTTONS === */
 .btn-fab {
   position: relative;
   display: flex;
@@ -73,9 +124,9 @@ body::before {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 58, 58, 0.9);
+  background: var(--accent);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: width 0.4s ease, padding 0.4s ease, border-radius 0.4s ease;
   overflow: hidden;
   white-space: nowrap;
   padding-left: 0;
@@ -83,12 +134,50 @@ body::before {
   cursor: pointer;
 }
 
+.btn-fab .icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
 .btn-fab img {
   width: 20px;
   height: 20px;
   filter: invert(1);
   z-index: 1;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icon-wrap img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.icon-default {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.icon-hover {
+  opacity: 0;
+  transform: rotate(-5deg);
+}
+
+.btn-fab:hover .icon-default {
+  opacity: 0;
+  transform: rotate(5deg);
+}
+
+.btn-fab:hover .icon-hover {
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
 .btn-fab span {
@@ -99,7 +188,7 @@ body::before {
   font-size: 14px;
   font-weight: 500;
   color: #fff;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, margin-left 0.3s ease, max-width 0.3s ease;
   user-select: none;
 }
 
@@ -116,15 +205,49 @@ body::before {
   max-width: 100px;
 }
 
+.btn {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+.btn.alt {
+  background: var(--btn-alt-bg);
+  color: #ffffff;
+}
+
+.btn.alt:hover {
+  background: var(--btn-alt-hover);
+}
+
+.btn-danger {
+  background: #e63946;
+}
+
+.btn-danger:hover {
+  background: #f55a6e;
+}
+
+/* === INPUTS + TEXTAREAS === */
 input,
 textarea {
   width: 100%;
   padding: 12px;
   font-size: 15px;
-  background: #111;
-  border: 1px solid #444;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 10px;
-  color: #eee;
+  color: var(--text-color);
   margin-bottom: 20px;
   box-sizing: border-box;
 }
@@ -134,20 +257,27 @@ textarea {
   height: 140px;
 }
 
+body.settings-page textarea#json-editor {
+  font-family: inherit;
+  min-height: 300px;
+}
+
+/* === ENTRY LIST === */
 .scroll-box {
   flex: 1;
   overflow-y: auto;
   padding-right: 10px;
 }
 
-/* Hide the scrollbar visually */
-.scroll-box::-webkit-scrollbar {
+.scroll-box::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.container::-webkit-scrollbar {
   width: 0;
   background: transparent;
 }
 
 .entry {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--entry-bg);
   padding: 16px 20px;
   margin-bottom: 20px;
   border-radius: 12px;
@@ -158,7 +288,7 @@ textarea {
 .entry h3 {
   margin: 0 0 6px;
   font-size: 18px;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .entry small {
@@ -173,37 +303,30 @@ textarea {
   line-height: 1.5;
 }
 
-.btn {
-  padding: 10px 16px;
-  font-size: 15px;
-  background: #ff3a3a;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  margin: 5px;
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.3s ease;
+/* === TOAST === */
+#toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: var(--toast-bg);
+  color: var(--text-color);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.btn:hover {
-  background: #ff5c5c;
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
 }
 
-.btn.alt {
-  background: #333;
-  color: #ccc;
-}
-
-.btn.alt:hover {
-  background: #444;
-}
-
-body::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-}
-
+/* === POPUPS === */
 #popup-backdrop,
 #confirm-backdrop {
   position: fixed;
@@ -302,6 +425,23 @@ body::-webkit-scrollbar {
   background: #e63946;
 }
 
+/* === VERSION TAG === */
+#version-container {
+  font-size: 14px;
+  color: var(--version-color);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  font-family: var(--mono-font);
+  margin-top: 10px;
+  align-self: flex-end;
+}
+
+#version-container:hover {
+  opacity: 1;
+}
+
+/* === PRELOADER === */
 #preloader {
   position: fixed;
   inset: 0;
@@ -325,70 +465,4 @@ body::-webkit-scrollbar {
   to {
     transform: rotate(360deg);
   }
-}
-
-.container::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-}
-
-#toast {
-  position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.9);
-  background: rgba(30, 30, 30, 0.9);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-#toast.show {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
-.icon-wrap {
-  position: relative;
-  width: 20px;
-  height: 20px;
-}
-
-.icon-wrap img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-}
-
-/* Default icon is visible by default */
-.icon-default {
-  opacity: 1;
-  transform: rotate(0deg);
-}
-
-/* Hover icon is hidden initially */
-.icon-hover {
-  opacity: 0;
-  transform: rotate(-5deg);
-}
-
-/* On hover: swap icons */
-.btn-fab:hover .icon-default {
-  opacity: 0;
-  transform: rotate(5deg);
-}
-
-.btn-fab:hover .icon-hover {
-  opacity: 1;
-  transform: rotate(0deg);
 }
