@@ -22,15 +22,15 @@ body.light {
   --overlay: rgba(255, 255, 255, 0.6);
   --container-bg: #fffdf4;
   --text-color: #222;
-  --entry-bg: #f7f3e3;
-  --input-bg: #fff8dc;
-  --input-border: #ddd;
-  --accent: #0077cc;
-  --accent-hover: #3399ff;
-  --btn-alt-bg: #c9c9c9;
-  --btn-alt-hover: #bdbdbd;
-  --toast-bg: rgba(255, 255, 255, 0.9);
-  --version-color: #555;
+  --entry-bg: #fdfaf0; /* lighter and clearer background */
+  --input-bg: #fffaf0; /* improved contrast and warmth */
+  --input-border: #ccc; /* slightly darker for definition */
+  --accent: #0066bb; /* deeper blue for legibility */
+  --accent-hover: #3399ff; /* maintains vibrant hover feel */
+  --btn-alt-bg: #d9d9d9; /* lighter alt button for better visibility */
+  --btn-alt-hover: #c4c4c4; /* distinct hover without being harsh */
+  --toast-bg: rgba(255, 255, 255, 0.95); /* almost white for pop-up clarity */
+  --version-color: #666; /* darker for easier reading */
 }
 
 /* === BASE === */
