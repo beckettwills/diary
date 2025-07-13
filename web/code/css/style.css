@@ -466,3 +466,22 @@ body::-webkit-scrollbar,
     transform: rotate(360deg);
   }
 }
+
+body.light .entry {
+  background: #fdf9e9; /* soft light background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* lighter shadow */
+}
+
+body.light .entry h3 {
+  color: #111; /* strong readable title */
+}
+
+body.light .entry small {
+  color: #666; /* more readable meta text */
+}
+
+body.light .entry p {
+  color: #333; /* darker for better body text contrast */
+  line-height: 1.6; /* more comfortable reading */
+  font-size: 16px; /* slightly larger for clarity */
+}
