@@ -3,137 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <title>Change Log</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-        font-family: "Source Code Pro", Menlo, Consolas, monospace;
-      }
-
-      body {
-        background-image: url("changes.png");
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        background-color: #0d0d0d; /* fallback */
-        color: #33ff77;
-        font-family: "Source Code Pro", Menlo, Consolas, monospace;
-        margin: 0;
-        padding: 40px;
-        line-height: 1.8;
-        font-size: 14px;
-      }
-
-      .scroll-container {
-        height: 100%;
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgba(0, 0, 0, 0.85);
-      }
-
-      .overlay {
-        width: 90%;
-        max-width: 800px;
-        max-height: 90%;
-        padding: 30px;
-        overflow-y: auto;
-        background-color: rgba(10, 10, 10, 0.9);
-        border-radius: 12px;
-        box-shadow: 0 0 20px #00000088;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .title {
-        font-size: 20px;
-        color: #5fdfff;
-        border-bottom: 1px solid #222;
-        padding-bottom: 8px;
-        margin-bottom: 20px;
-        text-shadow: 0 0 2px #5fdfff44;
-      }
-
-      .version {
-        color: #fff;
-        font-weight: bold;
-        margin-top: 30px;
-        font-size: 16px;
-      }
-
-      .date {
-        color: #888;
-        font-size: 12px;
-        margin-bottom: 10px;
-      }
-
-      .update {
-        margin-bottom: 20px;
-        white-space: pre-wrap;
-        line-height: 1.8;
-      }
-
-      .separator {
-        border-top: 1px solid #222;
-        margin-top: 30px;
-        margin-bottom: 20px;
-      }
-
-      .back-btn {
-        margin-top: 40px;
-        align-self: flex-end;
-        background-color: #111;
-        border: 1px solid #444;
-        color: #5fdfff;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-family: inherit;
-        font-size: 14px;
-        cursor: pointer;
-        transition: background 0.3s, color 0.3s;
-      }
-
-      .back-btn:hover {
-        background-color: #1a1a1a;
-        color: #33ff77;
-      }
-
-      /* Smooth scrollbars */
-      .overlay::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      .overlay::-webkit-scrollbar-thumb {
-        background-color: #444;
-        border-radius: 10px;
-      }
-
-      .overlay::-webkit-scrollbar-track {
-        background: transparent;
-      }
-    </style>
+    <link rel="stylesheet" href="code/css/changes.css" />
   </head>
   <body>
     <div class="scroll-container">
       <div class="overlay">
         <div class="title">CHANGE LOG</div>
 
+        <div class="version">v1.1.1</div>
+        <div class="date">July 13, 2025</div>
+        <div class="update">
+          backend cleanup and organization for folders to simplify app
+        </div>
+        <div class="separator"></div>
+
         <div class="version">v1.1.0</div>
         <div class="date">July 13, 2025</div>
         <div class="update">
           major ui overhaul with new dark and light mode and better styling
         </div>
-        <div class="separator"></div>
-
-        <div class="version">v1.0.6</div>
-        <div class="date">July 3, 2025</div>
-        <div class="update">I changed the styling to handwritten</div>
         <div class="separator"></div>
 
         <div class="version">v1.0.5</div>
@@ -164,7 +52,6 @@
         <div class="update">
           kinda forget what this one did. i added styling to this page tho
         </div>
-
         <div class="separator"></div>
 
         <div class="version">v1.0.1</div>
@@ -173,7 +60,6 @@
           this version calm luh allowed versions to be introduced through
           github. it also added this page so yip yip horray
         </div>
-
         <div class="separator"></div>
 
         <div class="version">v1.0.0</div>

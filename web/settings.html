@@ -2,11 +2,15 @@
 <html>
   <head>
     <title>Settings</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-    <script src="settings.js" defer></script>
+    <link rel="stylesheet" href="code/css/style.css" />
+    <script src="code/js/script.js" defer></script>
+    <script src="code/js/settings.js" defer></script>
   </head>
-  <body class="settings-page">
+  <body
+    class="settings-page"
+    data-bg-dark="img/png/image.png"
+    data-bg-light="img/png/light-bg.png"
+  >
     <div id="preloader">
       <div class="spinner"></div>
     </div>
@@ -21,10 +25,10 @@
             <div class="icon-wrap">
               <img
                 class="icon-default"
-                src="icons/book-open-text.svg"
+                src="img/svg/book-open-text.svg"
                 alt="Book Open"
               />
-              <img class="icon-hover" src="icons/book.svg" alt="Book" />
+              <img class="icon-hover" src="img/svg/book.svg" alt="Book" />
             </div>
             <span>Home</span>
           </a>
